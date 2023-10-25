@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+     <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl max-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div class="flex">
+                        <img class="h-8 w-8" src="{% static 'myapp/images/logo.png' %}" alt="logo"/>
+                        <span class="text-x1">Shoppyng pro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+{% for items in item %}
+<a href="{% url 'myapp:detail' items.id %}">
+    Name prodact {{ items.name }}  |
+    Product ID :{{ items.id }}     |
+    Price product: {{ items.price }} |
+    Description: {{ items.description }} |
+   <img src="{{ items.image.url }}">
+</a>
+{% endfor %}
+{% endblock content %}

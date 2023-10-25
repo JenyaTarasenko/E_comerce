@@ -1,0 +1,11 @@
+
+<h1>Forma Update  New Item</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input value="{{ item.name }}" type="text" placeholder="Name..." name="name" id="name">
+    <input  value="{{ item.price }}" type="text" placeholder="Price..." name="price" id="price">
+    <img src="{{ item.image.url }}" alt="image">
+    <input  value="{{ item.description }}" type="text" placeholder="Description..." name="description" id="description">
+    <input  type="file" accept="imag/" name="upload" id="upload">
+    <button type="submit" name="Add Item" value="Add Item"> Update item</button>
+</form>

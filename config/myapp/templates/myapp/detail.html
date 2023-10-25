@@ -1,0 +1,21 @@
+{% extends "myapp/base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class="flex p-10 w-full h-200">
+    <img class="w-1/3" src="{{ item.image.url }}" alt="Itemphoto">
+    <div class="px-6 py-4">
+
+         <p class="font-bold text-xl mb-2">{{ item.name }}</p>
+         <p class="font-bold text-xl text-green-500 mb-2">{{ item.id }}</p>
+         <p class="font-bold text-xl text-green-500 mb-2">${{ item.price | intcomma }}</p>
+
+    </div>
+<div>
+    <a href="{% url 'myapp:up_item' item.id %}">UPDATE</a>
+    <a href="{% url 'myapp:del_item' item.id %}">Delete</a>
+
+</div>
+
+</div>
+{% endblock content %}
