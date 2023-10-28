@@ -6,7 +6,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls', namespace='myapp')),#include first app приложение myapp
+    path('', include('myapp.urls', namespace='myapp')),#перенаправляет в приложение myapp
+    path('users/', include('users.urls', namespace='users')),#перенаправляет в приложение users
 ]
 
 

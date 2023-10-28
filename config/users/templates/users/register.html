@@ -1,0 +1,23 @@
+<!--{% extends "myapp/base.html" %}-->
+
+<!--&lt;!&ndash;{% block content %}&ndash;&gt;-->
+<!--<h1>Register user</h1>-->
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+<!--    <label>Username</label>-->
+<!--    <p>{{ form.username }}</p>-->
+<!--    <label>Email</label>-->
+<!--    <p>{{ form.email }}</p>-->
+<!--    <label>Password</label>-->
+<!--    {{ form.password1 }}-->
+<!--    <label>Password2</label>-->
+<!--    {{ form.password2 }}-->
+
+<button type="submit">Register</button>
+</form>
+
+
+
+<!--{% endblock content %}-->
