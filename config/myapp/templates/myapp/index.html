@@ -7,8 +7,18 @@
             <div class="flex justify-between">
                 <div class="flex space-x-7">
                     <div class="flex">
-                        <img class="h-8 w-8" src="{% static 'myapp/images/logo.png' %}" alt="logo"/>
+                        <a href="{% url 'myapp:index' %}"><img class="h-8 w-8" src="{% static 'myapp/images/logo.png' %}" alt="logo"/></>
                         <span class="text-x1">Shoppyng pro</span>
+                        <ul>
+                            <a href="{% url 'myapp:index' %}">First page</a>
+                            <a href="#">Detail page</a>
+                             <a href="#">Contacts</a>
+                            {% if user.authenticated %}
+                            <a href="{% url 'users:logout' %}">Logout/a>
+                            {% else %}
+                            <a href="{% url 'users:login' %}">Login</a>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
             </div>

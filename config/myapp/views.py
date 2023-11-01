@@ -1,14 +1,34 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView
+
 from .models import Product
 def index(request):
     """"first page"""
     item = Product.objects.all()
     return render(request, 'myapp/index.html', {'item': item})
 
+
+class ProductListView(ListView):
+    """
+    First page class ListView
+    """
+    model = Product
+    template_name = 'myapp/index.html'
+    context_object_name = 'item'#object list in templates
+
+
+
 def index_item(request, id):
     """"detail page"""
     item = Product.objects.get(id=id)
     return render(request, 'myapp/detail.html', {'item': item})
+
+
+class DetailListView(DetailView):
+    """"detail page class DetailView """
+    model = Product
+    template_name = 'myapp/detail.html'
+    context_object_name = 'item'
 
 
 def add(request):
