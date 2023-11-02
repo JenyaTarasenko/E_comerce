@@ -1,0 +1,16 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+<h1>Delete product</h1>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label form="">Are you want delete {{ object }}</label>
+
+        <img src="{{ object.image.url }}" alt="image">
+
+    </div>
+    <input type="sumbit" value="Confirm">
+    <a href="{% url 'myapp:index' %}">Cancel</a>
+</form>
+{% endblock content %}

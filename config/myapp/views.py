@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
-
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, DeleteView
 from .models import Product
+from django.core.paginator import Paginator
+
+
 def index(request):
     """"first page"""
     item = Product.objects.all()
-    return render(request, 'myapp/index.html', {'item': item})
+    paginator = Paginator(item, 2)#пагинация без класса
+    page_number = request.GET('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'myapp/index.html', {'item': item, 'page_obj': page_obj})
 
 
 class ProductListView(ListView):
@@ -15,6 +21,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'myapp/index.html'
     context_object_name = 'item'#object list in templates
+    paginate_by = 2 #для пагинации передается page_obj
 
 
 
@@ -65,3 +72,13 @@ def delete_item(request, id):
         item.delete()
         return redirect('/')
     return render(request, 'myapp/deleteitem.html', {'item': item})
+
+
+
+class ProductDeleteView(DeleteView):
+    """"form page delete product"""
+    model = Product
+    success_url = reverse_lazy('myapp:index')#переопределяем на главную страничку
+
+
+
